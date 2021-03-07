@@ -1,0 +1,115 @@
+/**********************
+**** VERTICAL HEIGHT
+***********************/
+/* Do not use this except for the main layout */
+.story-row {
+  font-size: .875rem;
+  align-items: center;
+  background: #fff;
+  border-radius: 3px;
+  display: flex;
+  margin-left: 5rem;
+  transition: background .2s; }
+  .story-row .project,
+  .story-row .assigned {
+    padding: .5rem; }
+  .story-row .vote,
+  .story-row .status-holder,
+  .story-row .sprint,
+  .story-row .name,
+  .story-row .progress {
+    padding: 1rem .5rem; }
+  .story-row .vote {
+    flex-basis: 60px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+    text-align: center; }
+  .story-row .assigned,
+  .story-row .project {
+    flex-basis: 100px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+    text-align: center; }
+  .story-row .status-holder,
+  .story-row .sprint {
+    flex-basis: 150px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+    max-width: 150px;
+    text-align: center; }
+  .story-row .name,
+  .story-row .progress {
+    flex-basis: 20vw;
+    flex-grow: 1;
+    flex-shrink: 1;
+    max-width: 40vw; }
+  .story-row .progress {
+    flex-shrink: 3;
+    margin-right: 1rem;
+    position: relative; }
+  .story-row .sprint {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 90%; }
+  .story-row .name {
+    padding-left: 3rem; }
+  .story-row:hover {
+    background-color: #F9F9FB; }
+  .story-row.is-blocked {
+    background: rgba(228, 64, 87, 0.25); }
+    .story-row.is-blocked a,
+    .story-row.is-blocked span,
+    .story-row.is-blocked div {
+      color: #fff; }
+    .story-row.is-blocked svg {
+      fill: #fff;
+      stroke: #fff; }
+  .story-row.is-closed .name {
+    color: #70728F;
+    text-decoration: line-through; }
+  .story-row .name {
+    flex-basis: 16vw; }
+    .story-row .name a {
+      cursor: pointer; }
+      .story-row .name a:hover .ref,
+      .story-row .name a:hover .subject {
+        color: #008AA8; }
+    .story-row .name .subject {
+      color: #4C566A;
+      margin-left: .25rem; }
+    .story-row .name tg-belong-to-epics {
+      margin-left: .5rem; }
+  .story-row .progress-bar,
+  .story-row .progress-status {
+    height: 1.5rem;
+    left: 0;
+    position: absolute;
+    top: .25rem; }
+  .story-row .progress-bar {
+    background: #F1F1F4;
+    max-width: 40vw;
+    width: 100%; }
+  .story-row .progress-status {
+    background-color: #008AA8;
+    width: 10vw; }
+  .story-row .project {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    justify-content: center; }
+  .story-row .project img,
+  .story-row .assigned img {
+    width: 30px; }
+  .story-row .assigned {
+    align-items: center;
+    display: flex;
+    justify-content: center; }
+    .story-row .assigned img {
+      border-radius: 50%;
+      height: 2rem;
+      overflow: hidden;
+      width: 2rem; }
