@@ -522,9 +522,10 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
     # Auth
     $routeProvider.when("/login",
         {
-            templateUrl: "auth/login.html",
+            template: ""
             title: "LOGIN.PAGE_TITLE",
             description: "LOGIN.PAGE_DESCRIPTION",
+            loader: true,
             disableHeader: true,
             controller: "LoginPage",
         }

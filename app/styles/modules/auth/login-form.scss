@@ -1,5 +1,10 @@
 .login-form-container {
     padding-top: 1rem;
+
+    .btn-small {
+        background-color: $color-gray400;
+        margin-bottom: 12px;
+    }
     .login-password {
         position: relative;
     }

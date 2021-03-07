@@ -54,6 +54,7 @@ module.controller('LoginPage', LoginPage)
 
 class AuthService extends taiga.Service
     @.$inject = ["$rootScope",
+                 "$window",
                  "$tgStorage",
                  "$tgModel",
                  "$tgResources",
@@ -66,7 +67,7 @@ class AuthService extends taiga.Service
                  "tgThemeService",
                  "$tgAnalytics"]
 
-    constructor: (@rootscope, @storage, @model, @rs, @http, @urls, @config, @userpilot, @translate, @currentUserService,
+    constructor: (@rootscope, @window, @storage, @model, @rs, @http, @urls, @config, @userpilot, @translate, @currentUserService,
                   @themeService, @analytics) ->
         super()
 
@@ -166,20 +167,30 @@ class AuthService extends taiga.Service
             @rootscope.$broadcast("auth:refresh", user)
             return user
 
-    login: (data, type) ->
-        url = @urls.resolve("auth")
+    login: (type) ->
+        url = @urls.resolve("tflogin")
+        @window.location.href = url
 
-        data = _.clone(data, false)
-        data.type = if type then type else "normal"
+        # data = _.clone(data, false)
+        # data.type = if type then type else "normal"
 
-        @.removeToken()
+        # @.removeToken()
 
-        return @http.post(url, data).then (data, status) =>
-            user = @model.make_model("users", data.data)
-            @.setToken(user.auth_token)
-            @.setUser(user)
-            @rootscope.$broadcast("auth:login", user)
-            return user
+        # return @http.post(url, data).then (data, status) =>
+        #     user = @model.make_model("users", data.data)
+        #     @.setToken(user.auth_token)
+        #     @.setUser(user)
+        #     @rootscope.$broadcast("auth:login", user)
+        #     return user
+
+    # setTFUser: (data) ->
+    #     data = _.clone(data, false)
+    #     @.removeToken()
+    #     user = @model.make_model("users", data.data)
+    #     @.setToken(user.auth_token)
+    #     @.setUser(user)
+    #     @rootscope.$broadcast("auth:login", user)
+    #     return user
 
     logout: ->
         @.removeToken()
@@ -319,15 +330,10 @@ LoginDirective = ($auth, $confirm, $location, $config, $routeParams, $navUrls, $
             if not form.validate()
                 return
 
-            data = {
-                "username": $el.find("form.login-form input[name=username]").val(),
-                "password": $el.find("form.login-form input[name=password]").val()
-            }
-
             loginFormType = $config.get("loginFormType", "normal")
 
-            promise = $auth.login(data, loginFormType)
-            return promise.then(onSuccess, onError)
+            $auth.login(loginFormType)
+            # return promise.then(onSuccess, onError)
 
         $el.on "submit", "form", submit
 

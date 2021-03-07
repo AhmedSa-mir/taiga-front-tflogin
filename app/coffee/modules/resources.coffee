@@ -24,6 +24,7 @@ class ResourcesService extends taiga.Service
 urls = {
     # Auth
     "auth": "/auth"
+    "tflogin": "/threebot/login"
     "auth-register": "/auth/register"
     "invitations": "/invitations"
 

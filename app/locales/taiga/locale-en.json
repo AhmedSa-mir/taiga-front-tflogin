@@ -336,7 +336,7 @@
         "LINK_FORGOT_PASSWORD": "Forgot it?",
         "TITLE_LINK_FORGOT_PASSWORD": "Did you forget your password?",
         "ACTION_ENTER": "Enter",
-        "ACTION_SIGN_IN": "Login",
+        "ACTION_SIGN_IN": "Login with TFConnect",
         "PLACEHOLDER_AUTH_PASSWORD": "Password (case sensitive)",
         "ALT_LOGIN": "Or login with"
     },
