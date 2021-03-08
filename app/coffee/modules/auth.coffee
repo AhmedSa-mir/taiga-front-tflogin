@@ -44,6 +44,10 @@ class LoginPage
                     $auth.removeToken()
                 else
                     $location.url(url)
+        else
+            if $routeParams['username'] && $routeParams['auth_token']
+                $auth.setTFUser($routeParams)
+                $location.url('/')
 
 
 module.controller('LoginPage', LoginPage)
@@ -183,14 +187,13 @@ class AuthService extends taiga.Service
         #     @rootscope.$broadcast("auth:login", user)
         #     return user
 
-    # setTFUser: (data) ->
-    #     data = _.clone(data, false)
-    #     @.removeToken()
-    #     user = @model.make_model("users", data.data)
-    #     @.setToken(user.auth_token)
-    #     @.setUser(user)
-    #     @rootscope.$broadcast("auth:login", user)
-    #     return user
+    setTFUser: (data) ->
+        @.removeToken()
+        user = @model.make_model("users", data)
+        @.setToken(user.auth_token)
+        @.setUser(user)
+        @rootscope.$broadcast("auth:login", user)
+        return user
 
     logout: ->
         @.removeToken()
